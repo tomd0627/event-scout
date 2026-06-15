@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#C05621" />
+    <meta
+      name="description"
+      content="Event Scout — AI-powered local event discovery. Find what's actually worth doing this weekend."
+    />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Event Scout" />
+    <meta
+      property="og:description"
+      content="What's happening near you this weekend — curated by AI, not an algorithm."
+    />
+    <meta property="og:image" content="/assets/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <title>Event Scout — What's happening near you this weekend</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Source+Sans+3:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Favicon -->
+    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+
+    <link rel="stylesheet" href="/css/styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main" tabindex="0">Skip to main content</a>
+
+    <header class="site-header">
+      <div class="container">
+        <div class="site-header__inner">
+          <div class="site-header__brand">
+            <svg
+              aria-hidden="true"
+              class="site-header__logo-icon"
+              fill="none"
+              height="28"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              width="28"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <circle cx="12" cy="12" r="10" />
+              <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76" />
+            </svg>
+            <span class="site-header__wordmark">Event Scout</span>
+          </div>
+          <p class="site-header__tagline">
+            What's happening near you this weekend — curated by AI, not an algorithm.
+          </p>
+        </div>
+      </div>
+    </header>
+
+    <main id="main" tabindex="-1">
+      <div class="container">
+        <!-- Input Panel -->
+        <section aria-labelledby="search-heading" class="input-panel">
+          <h1 class="input-panel__heading" id="search-heading">Find your next outing</h1>
+          <p class="input-panel__hint">Try: <em>Brooklyn · Outdoors + Music · This Weekend</em></p>
+
+          <!-- Location -->
+          <div class="field-group">
+            <label class="field-label" for="location">Your location</label>
+            <div class="location-row">
+              <input
+                autocomplete="off"
+                class="text-input"
+                id="location"
+                name="location"
+                placeholder="City name or zip code"
+                type="text"
+              />
+              <button
+                aria-label="Use my current location (your coordinates are not stored)"
+                class="btn btn--ghost btn--icon"
+                id="geo-btn"
+                type="button"
+              >
+                <i aria-hidden="true" data-lucide="map-pin"></i>
+                <span>Use my location</span>
+              </button>
+            </div>
+            <p class="location-note" id="location-note" role="status">
+              Your location is used only for this search and is never stored.
+            </p>
+          </div>
+
+          <!-- Date Range -->
+          <div class="field-group">
+            <span class="field-label" id="date-range-label">When</span>
+            <div aria-labelledby="date-range-label" class="segmented-control" role="group">
+              <button
+                aria-pressed="true"
+                class="segmented-btn segmented-btn--active"
+                data-value="this-weekend"
+                id="date-this-weekend"
+                type="button"
+              >
+                This Weekend
+              </button>
+              <button
+                aria-pressed="false"
+                class="segmented-btn"
+                data-value="this-week"
+                id="date-this-week"
+                type="button"
+              >
+                This Week
+              </button>
+              <button
+                aria-pressed="false"
+                class="segmented-btn"
+                data-value="next-2-weeks"
+                id="date-next-2-weeks"
+                type="button"
+              >
+                Next 2 Weeks
+              </button>
+            </div>
+          </div>
+
+          <!-- Interest Tags -->
+          <fieldset class="field-group tags-fieldset">
+            <legend class="field-label">Interests</legend>
+            <div class="tags-grid">
+              <label class="tag-chip">
+                <input class="tag-chip__input" name="tags" type="checkbox" value="Music" />
+                <i aria-hidden="true" data-lucide="music"></i>
+                Music
+              </label>
+              <label class="tag-chip">
+                <input
+                  class="tag-chip__input"
+                  name="tags"
+                  type="checkbox"
+                  value="Food &amp; Drink"
+                />
+                <i aria-hidden="true" data-lucide="utensils"></i>
+                Food &amp; Drink
+              </label>
+              <label class="tag-chip">
+                <input class="tag-chip__input" name="tags" type="checkbox" value="Arts" />
+                <i aria-hidden="true" data-lucide="palette"></i>
+                Arts
+              </label>
+              <label class="tag-chip">
+                <input class="tag-chip__input" name="tags" type="checkbox" value="Outdoors" />
+                <i aria-hidden="true" data-lucide="trees"></i>
+                Outdoors
+              </label>
+              <label class="tag-chip">
+                <input class="tag-chip__input" name="tags" type="checkbox" value="Markets" />
+                <i aria-hidden="true" data-lucide="shopping-bag"></i>
+                Markets
+              </label>
+              <label class="tag-chip">
+                <input class="tag-chip__input" name="tags" type="checkbox" value="Family" />
+                <i aria-hidden="true" data-lucide="heart"></i>
+                Family
+              </label>
+              <label class="tag-chip">
+                <input class="tag-chip__input" name="tags" type="checkbox" value="Sports" />
+                <i aria-hidden="true" data-lucide="trophy"></i>
+                Sports
+              </label>
+              <label class="tag-chip">
+                <input class="tag-chip__input" name="tags" type="checkbox" value="Film" />
+                <i aria-hidden="true" data-lucide="film"></i>
+                Film
+              </label>
+              <label class="tag-chip">
+                <input class="tag-chip__input" name="tags" type="checkbox" value="Comedy" />
+                <i aria-hidden="true" data-lucide="mic"></i>
+                Comedy
+              </label>
+              <label class="tag-chip">
+                <input class="tag-chip__input" name="tags" type="checkbox" value="Free Only" />
+                <i aria-hidden="true" data-lucide="tag"></i>
+                Free Only
+              </label>
+            </div>
+          </fieldset>
+
+          <!-- Submit -->
+          <div class="submit-row">
+            <button class="btn btn--primary" id="scout-btn" type="button">
+              <i aria-hidden="true" data-lucide="search"></i>
+              Scout Events
+            </button>
+          </div>
+        </section>
+
+        <!-- Results -->
+        <section aria-labelledby="results-heading" class="results-section" id="results">
+          <h2 class="sr-only" id="results-heading">Event results</h2>
+
+          <!-- Idle state -->
+          <div class="state-idle" id="state-idle">
+            <div class="idle-illustration">
+              <i aria-hidden="true" data-lucide="compass"></i>
+            </div>
+            <p class="idle-copy">
+              Enter your location and pick a few interests to discover what's worth doing near you.
+            </p>
+          </div>
+
+          <!-- Loading state -->
+          <div aria-atomic="true" class="state-loading" hidden id="state-loading" role="status">
+            <p class="sr-only" id="loading-announce">Searching for events…</p>
+            <div class="skeleton-grid" aria-hidden="true">
+              <div class="skeleton-card">
+                <div class="skeleton-line skeleton-line--title"></div>
+                <div class="skeleton-line skeleton-line--meta"></div>
+                <div class="skeleton-line skeleton-line--body"></div>
+                <div class="skeleton-line skeleton-line--body skeleton-line--short"></div>
+                <div class="skeleton-tags">
+                  <div class="skeleton-tag"></div>
+                  <div class="skeleton-tag"></div>
+                </div>
+              </div>
+              <div class="skeleton-card">
+                <div class="skeleton-line skeleton-line--title"></div>
+                <div class="skeleton-line skeleton-line--meta"></div>
+                <div class="skeleton-line skeleton-line--body"></div>
+                <div class="skeleton-line skeleton-line--body skeleton-line--short"></div>
+                <div class="skeleton-tags">
+                  <div class="skeleton-tag"></div>
+                  <div class="skeleton-tag"></div>
+                </div>
+              </div>
+              <div class="skeleton-card">
+                <div class="skeleton-line skeleton-line--title"></div>
+                <div class="skeleton-line skeleton-line--meta"></div>
+                <div class="skeleton-line skeleton-line--body"></div>
+                <div class="skeleton-line skeleton-line--body skeleton-line--short"></div>
+                <div class="skeleton-tags">
+                  <div class="skeleton-tag"></div>
+                  <div class="skeleton-tag"></div>
+                </div>
+              </div>
+              <div class="skeleton-card">
+                <div class="skeleton-line skeleton-line--title"></div>
+                <div class="skeleton-line skeleton-line--meta"></div>
+                <div class="skeleton-line skeleton-line--body"></div>
+                <div class="skeleton-line skeleton-line--body skeleton-line--short"></div>
+                <div class="skeleton-tags">
+                  <div class="skeleton-tag"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Success state -->
+          <div class="state-success" hidden id="state-success">
+            <div class="results-toolbar" id="results-toolbar">
+              <p class="results-summary" id="results-summary"></p>
+              <div class="results-actions">
+                <button class="btn btn--ghost" id="refine-btn" type="button">
+                  <i aria-hidden="true" data-lucide="sliders-horizontal"></i>
+                  Refine
+                </button>
+                <button class="btn btn--primary" id="scout-again-btn" type="button">
+                  <i aria-hidden="true" data-lucide="refresh-cw"></i>
+                  Scout Again
+                </button>
+              </div>
+            </div>
+            <div class="events-grid" id="events-grid"></div>
+          </div>
+
+          <!-- Empty state -->
+          <div aria-atomic="true" class="state-empty" hidden id="state-empty" role="status">
+            <i aria-hidden="true" data-lucide="calendar-x"></i>
+            <h3 class="state-empty__heading">Nothing found for those filters</h3>
+            <p class="state-empty__body">
+              Try broadening your date range, adding more interests, or searching a nearby city.
+            </p>
+            <button class="btn btn--ghost" id="empty-refine-btn" type="button">
+              <i aria-hidden="true" data-lucide="sliders-horizontal"></i>
+              Adjust search
+            </button>
+          </div>
+
+          <!-- Error state -->
+          <div aria-atomic="true" class="state-error" hidden id="state-error" role="status">
+            <i aria-hidden="true" data-lucide="alert-circle"></i>
+            <h3 class="state-error__heading">Something went wrong</h3>
+            <p class="state-error__body" id="error-message"></p>
+            <button class="btn btn--primary" id="retry-btn" type="button">
+              <i aria-hidden="true" data-lucide="refresh-cw"></i>
+              Try again
+            </button>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p class="site-footer__copy">
+          Built with the
+          <a
+            href="https://docs.anthropic.com/en/api/getting-started"
+            rel="noopener noreferrer"
+            target="_blank"
+            >Claude API</a
+          >
+          · Events sourced in real time via web search
+        </p>
+      </div>
+    </footer>
+
+    <!-- Lucide icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+
+    <!-- App scripts -->
+    <script src="/env.js"></script>
+    <script src="/js/scout.js"></script>
+    <script src="/js/renderer.js"></script>
+    <script src="/js/app.js"></script>
+  </body>
+</html>

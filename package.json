@@ -1,0 +1,27 @@
+{
+  "name": "event-scout",
+  "version": "1.0.0",
+  "description": "AI-powered local event discovery — curated by Claude, not an algorithm.",
+  "private": true,
+  "scripts": {
+    "lint:css": "stylelint \"css/**/*.css\"",
+    "lint:js": "eslint \"js/**/*.js\"",
+    "lint:html": "html-validate index.html",
+    "lint": "npm run lint:css && npm run lint:js && npm run lint:html",
+    "format": "prettier --write \"**/*.{html,css,js,json,md}\"",
+    "format:check": "prettier --check \"**/*.{html,css,js,json,md}\"",
+    "validate": "npm run lint && npm run format:check",
+    "prepare": "husky"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.0.0",
+    "eslint": "^9.0.0",
+    "html-validate": "^9.0.0",
+    "husky": "^9.0.0",
+    "lint-staged": "^15.0.0",
+    "prettier": "^3.0.0",
+    "stylelint": "^16.0.0",
+    "stylelint-config-standard": "^36.0.0",
+    "stylelint-order": "^6.0.0"
+  }
+}
