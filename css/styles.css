@@ -324,6 +324,11 @@ legend {
   flex-shrink: 0;
 }
 
+.btn:disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
 .btn svg,
 .btn i {
   block-size: 16px;
@@ -406,13 +411,13 @@ legend {
 .tag-chip:hover {
   background-color: var(--color-accent-soft);
   border-color: var(--color-accent);
-  color: var(--color-accent);
+  color: var(--color-accent-hover);
 }
 
 .tag-chip:has(.tag-chip__input:checked) {
   background-color: var(--color-accent-soft);
   border-color: var(--color-accent);
-  color: var(--color-accent);
+  color: var(--color-accent-hover);
   font-weight: 600;
 }
 
@@ -461,7 +466,7 @@ legend {
 }
 
 /* Idle */
-.state-idle {
+.state-idle:not([hidden]) {
   align-items: center;
   color: var(--color-ink-muted);
   display: flex;
@@ -694,7 +699,7 @@ legend {
 .event-cost {
   background-color: var(--color-accent-soft);
   border-radius: 99px;
-  color: var(--color-accent);
+  color: var(--color-accent-hover);
   font-size: 0.8rem;
   font-weight: 600;
   padding-block: 3px;
@@ -780,7 +785,7 @@ legend {
 /* ============================================================
    Empty State
    ============================================================ */
-.state-empty {
+.state-empty:not([hidden]) {
   align-items: center;
   color: var(--color-ink-muted);
   display: flex;
@@ -810,7 +815,7 @@ legend {
 /* ============================================================
    Error State
    ============================================================ */
-.state-error {
+.state-error:not([hidden]) {
   align-items: center;
   display: flex;
   flex-direction: column;
@@ -819,8 +824,8 @@ legend {
   text-align: center;
 }
 
-.state-error svg,
-.state-error i {
+.state-error > svg,
+.state-error > i {
   block-size: 40px;
   color: #c0392b;
   inline-size: 40px;
@@ -866,8 +871,14 @@ legend {
 }
 
 @media (max-width: 480px) {
-  .location-row {
-    flex-direction: column;
+  .geo-btn__text {
+    display: none;
+  }
+
+  #geo-btn {
+    align-self: center;
+    justify-content: center;
+    padding-inline: 0.65rem;
   }
 
   .segmented-control {

@@ -32,6 +32,7 @@ function setUIState(state) {
   stateSuccess.hidden = state !== 'success';
   stateEmpty.hidden = state !== 'empty';
   stateError.hidden = state !== 'error';
+  scoutBtn.disabled = state === 'loading';
 }
 
 function getFormState() {
@@ -109,9 +110,11 @@ geoBtn.addEventListener('click', () => {
         .then((data) => {
           const addr = data.address || {};
           const city = addr.city || addr.town || addr.village || addr.county || '';
-          if (city) {
-            locationInput.value = city;
-            setLocationNote(`Location set to ${city}. Your coordinates are not stored.`);
+          const region = addr.state_code || addr.state || addr.country || '';
+          const locationLabel = city && region ? `${city}, ${region}` : city;
+          if (locationLabel) {
+            locationInput.value = locationLabel;
+            setLocationNote(`Location set to ${locationLabel}. Your coordinates are not stored.`);
           } else {
             setLocationNote('Could not determine city name. Please type your location.');
           }
@@ -141,6 +144,21 @@ function runSearch(formState) {
     setLocationNote('Please enter a location to search.');
     return;
   }
+
+  if (/^\d+$/.test(formState.location) && formState.location.length !== 5) {
+    locationInput.focus();
+    locationInput.setAttribute('aria-invalid', 'true');
+    setLocationNote('Please enter a full 5-digit zip code.');
+    return;
+  }
+
+  if (formState.location.length < 2) {
+    locationInput.focus();
+    locationInput.setAttribute('aria-invalid', 'true');
+    setLocationNote('Please enter a city name or zip code.');
+    return;
+  }
+
   locationInput.removeAttribute('aria-invalid');
 
   lastFormState = formState;

@@ -26,9 +26,19 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
+      as="style"
       href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Source+Sans+3:wght@400;500;600&display=swap"
-      rel="stylesheet"
+      onload="
+        this.onload = null;
+        this.rel = 'stylesheet';
+      "
+      rel="preload"
     />
+    <noscript
+      ><link
+        href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Source+Sans+3:wght@400;500;600&display=swap"
+        rel="stylesheet"
+    /></noscript>
 
     <!-- Favicon -->
     <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
@@ -83,7 +93,7 @@
                 class="text-input"
                 id="location"
                 name="location"
-                placeholder="City name or zip code"
+                placeholder="City, state or zip code"
                 type="text"
               />
               <button
@@ -93,7 +103,7 @@
                 type="button"
               >
                 <i aria-hidden="true" data-lucide="map-pin"></i>
-                <span>Use my location</span>
+                <span class="geo-btn__text">Use my location</span>
               </button>
             </div>
             <p class="location-note" id="location-note" role="status">
