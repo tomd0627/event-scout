@@ -19,7 +19,7 @@ Event Scout is an AI-powered local event discovery tool. Enter your location and
 ## Tech Stack
 
 - Vanilla HTML / CSS / JS — no framework
-- [Claude API](https://docs.anthropic.com/en/api/getting-started) (`claude-sonnet-4-20250514`) with `web_search_20250305` tool
+- [Claude API](https://docs.anthropic.com/en/api/getting-started) (`claude-sonnet-4-6`) with `web_search_20250305` tool
 - [Nominatim](https://nominatim.org/) (OpenStreetMap) for reverse geocoding — no API key required
 - [Lucide Icons](https://lucide.dev/) via CDN
 - Deployed on Netlify
